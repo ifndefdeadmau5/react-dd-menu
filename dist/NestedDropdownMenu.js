@@ -74,7 +74,7 @@ var NestedDropdownMenu = function (_PureComponent) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.toggleComponent = _reactDom2.default.findDOMNode(this).querySelector('*');
-      // this.toggleComponent.addEventListener('click', this.handleToggleComponentClick);
+      this.toggleComponent.addEventListener('click', this.handleToggleComponentClick);
     }
   }, {
     key: 'componentWillUnmount',
@@ -103,10 +103,6 @@ var NestedDropdownMenu = function (_PureComponent) {
       if (this.props.openOnMouseover) {
         itemProps.onMouseOver = this.handleMouseOver;
         itemProps.onMouseLeave = this.handleMouseLeave;
-      }
-
-      if (this.props.openOnMouseclick) {
-        itemProps.onMouseClick = this.handleToggleComponentClick;
       }
 
       var prefix = upwards ? 'up-' : '';
@@ -149,8 +145,7 @@ NestedDropdownMenu.propTypes = {
   delay: _propTypes2.default.number,
   enterTimeout: _propTypes2.default.number,
   leaveTimeout: _propTypes2.default.number,
-  openOnMouseover: _propTypes2.default.bool,
-  openOnMouseclick: _propTypes2.default.bool
+  openOnMouseover: _propTypes2.default.bool
 };
 NestedDropdownMenu.defaultProps = {
   nested: 'reverse',
@@ -160,9 +155,7 @@ NestedDropdownMenu.defaultProps = {
   delay: 500,
   enterTimeout: 150,
   leaveTimeout: 150,
-  openOnMouseover: true,
-  openOnMouseclick: false
-
+  openOnMouseover: true
 };
 exports.default = NestedDropdownMenu;
 module.exports = exports['default'];
