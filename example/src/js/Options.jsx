@@ -28,6 +28,14 @@ export default [
             <li><a href="#">I Think You Got It</a></li>
           </NestedDropdownMenu>
         </NestedDropdownMenu>
+        <NestedDropdownMenu nested="right" align="left" toggle={<button type="button">Multi-level Menu<span className="fa fa-chevron-right" /></button>}>
+          <li><a href="#">Wee wooo 1</a></li>
+          <li><a href="#">Wee wooo 2</a></li>
+          <li><a href="#">Wee wooo 3</a></li>
+          <NestedDropdownMenu toggle={<button type="button"><span className="fa fa-chevron-left" />Multi-level Menu</button>}>
+            <li><a href="#">I Think You Got It</a></li>
+          </NestedDropdownMenu>
+        </NestedDropdownMenu>
       </NestedDropdownMenu>
     ),
   },
