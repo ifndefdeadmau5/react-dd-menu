@@ -74,7 +74,7 @@ var NestedDropdownMenu = function (_PureComponent) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.toggleComponent = _reactDom2.default.findDOMNode(this).querySelector('*');
-      this.toggleComponent.addEventListener('click', this.handleToggleComponentClick);
+      // this.toggleComponent.addEventListener('click', this.handleToggleComponentClick);
     }
   }, {
     key: 'componentWillUnmount',
@@ -86,14 +86,14 @@ var NestedDropdownMenu = function (_PureComponent) {
     key: 'render',
     value: function render() {
       var _props = this.props,
-          toggle = _props.toggle,
-          children = _props.children,
-          nested = _props.nested,
-          animate = _props.animate,
-          direction = _props.direction,
-          upwards = _props.upwards,
-          enterTimeout = _props.enterTimeout,
-          leaveTimeout = _props.leaveTimeout;
+        toggle = _props.toggle,
+        children = _props.children,
+        nested = _props.nested,
+        animate = _props.animate,
+        direction = _props.direction,
+        upwards = _props.upwards,
+        enterTimeout = _props.enterTimeout,
+        leaveTimeout = _props.leaveTimeout;
 
       var isOpen = this.state.isHoverOpen || this.state.isClickOpen;
 
@@ -103,6 +103,10 @@ var NestedDropdownMenu = function (_PureComponent) {
       if (this.props.openOnMouseover) {
         itemProps.onMouseOver = this.handleMouseOver;
         itemProps.onMouseLeave = this.handleMouseLeave;
+      }
+
+      if (this.props.openOnMouseclick) {
+        itemProps.onMouseClick = this.handleToggleComponentClick;
       }
 
       var prefix = upwards ? 'up-' : '';
@@ -145,7 +149,8 @@ NestedDropdownMenu.propTypes = {
   delay: _propTypes2.default.number,
   enterTimeout: _propTypes2.default.number,
   leaveTimeout: _propTypes2.default.number,
-  openOnMouseover: _propTypes2.default.bool
+  openOnMouseover: _propTypes2.default.bool,
+  openOnMouseclick: _propTypes2.default.bool
 };
 NestedDropdownMenu.defaultProps = {
   nested: 'reverse',
@@ -155,7 +160,9 @@ NestedDropdownMenu.defaultProps = {
   delay: 500,
   enterTimeout: 150,
   leaveTimeout: 150,
-  openOnMouseover: true
+  openOnMouseover: true,
+  openOnMouseclick: false
+
 };
 exports.default = NestedDropdownMenu;
 module.exports = exports['default'];
