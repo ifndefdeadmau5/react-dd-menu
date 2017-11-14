@@ -45,18 +45,11 @@ export default class NestedDropdownMenu extends PureComponent {
 
   componentDidMount() {
     this.toggleComponent = ReactDOM.findDOMNode(this).querySelector('*');
-    // this.toggleComponent.addEventListener('click', this.handleToggleComponentClick);
   }
 
   componentWillUnmount() {
     this.closeCallback && clearTimeout(this.closeCallback);
-    this.toggleComponent.removeEventListener('click', this.handleToggleComponentClick);
   }
-
-  handleToggleComponentClick = (e) => {
-    e.stopPropagation();
-    this.setState({ isClickOpen: !this.state.isClickOpen });
-  };
 
   handleMouseOver = () => {
     if(this.closeCallback) {
@@ -82,10 +75,6 @@ export default class NestedDropdownMenu extends PureComponent {
     if(this.props.openOnMouseover) {
       itemProps.onMouseOver = this.handleMouseOver;
       itemProps.onMouseLeave = this.handleMouseLeave;
-    }
-
-    if(this.props.openOnMouseclick) {
-      itemProps.onMouseClick = this.handleToggleComponentClick;
     }
 
     const prefix = upwards ? 'up-' : '';
